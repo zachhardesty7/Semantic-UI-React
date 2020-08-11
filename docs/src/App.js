@@ -1,5 +1,4 @@
 import React from 'react'
-import { hot } from 'react-hot-loader/root'
 import { Route, Router, withSiteData } from 'react-static'
 import { Switch } from 'react-router'
 import Routes from 'react-static-routes'
@@ -43,4 +42,4 @@ App.propTypes = {
   versions: docTypes.versions,
 }
 
-export default hot(withSiteData(App))
+export default withSiteData(App)

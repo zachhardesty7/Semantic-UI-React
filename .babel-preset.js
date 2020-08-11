@@ -66,9 +66,6 @@ module.exports = () => ({
   ],
   plugins,
   env: {
-    development: {
-      plugins: ['react-hot-loader/babel'],
-    },
     test: {
       plugins: [['istanbul', { include: ['src'] }]],
     },

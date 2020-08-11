@@ -13,7 +13,7 @@ export default (webpackConfig, { stage }) => ({
       ? {
           main: [config.paths.docsSrc('index.js'), config.paths.src('index.js')],
         }
-      : webpackConfig.entry,
+      : webpackConfig.entry.filter((entry) => entry !== require.resolve('react-hot-loader')),
   externals:
     stage === 'node'
       ? webpackConfig.externals
