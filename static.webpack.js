@@ -9,11 +9,14 @@ export default (webpackConfig, { stage }) => ({
   ...webpackConfig,
   devtool: config.compiler_devtool,
   entry:
+    // eslint-disable-next-line no-nested-ternary
     stage === 'prod'
       ? {
           main: [config.paths.docsSrc('index.js'), config.paths.src('index.js')],
         }
-      : webpackConfig.entry.filter((entry) => entry !== require.resolve('react-hot-loader')),
+      : Array.isArray(webpackConfig.entry)
+      ? webpackConfig.entry.filter((entry) => entry !== require.resolve('react-hot-loader'))
+      : webpackConfig.entry,
   externals:
     stage === 'node'
       ? webpackConfig.externals
